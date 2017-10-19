@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{DB7F32ED-49D8-41D9-913D-1A2F55721FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruler", "Ruler\Ruler.csproj", "{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB7F32ED-49D8-41D9-913D-1A2F55721FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7F32ED-49D8-41D9-913D-1A2F55721FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7F32ED-49D8-41D9-913D-1A2F55721FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7F32ED-49D8-41D9-913D-1A2F55721FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
