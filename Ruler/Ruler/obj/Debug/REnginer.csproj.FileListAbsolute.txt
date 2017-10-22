@@ -1,0 +1,10 @@
+E:\GitHubs\Ruler\Ruler\bin\Debug\REnginer.dll
+E:\GitHubs\Ruler\Ruler\bin\Debug\REnginer.pdb
+E:\GitHubs\Ruler\Ruler\bin\Debug\Noesis.Javascript.dll
+E:\GitHubs\Ruler\Ruler\obj\Debug\REnginer.dll
+E:\GitHubs\Ruler\Ruler\obj\Debug\REnginer.pdb
+E:\GitHubs\Ruler\REnginer\bin\Debug\REnginer.dll
+E:\GitHubs\Ruler\REnginer\bin\Debug\REnginer.pdb
+E:\GitHubs\Ruler\REnginer\bin\Debug\Noesis.Javascript.dll
+E:\GitHubs\Ruler\REnginer\obj\Debug\REnginer.dll
+E:\GitHubs\Ruler\REnginer\obj\Debug\REnginer.pdb
