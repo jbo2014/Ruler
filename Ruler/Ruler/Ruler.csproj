@@ -59,11 +59,11 @@
     <Compile Include="IJavascriptGenerator.cs" />
     <Compile Include="Manager\IRuleDefination.cs" />
     <Compile Include="ParameterInfo.cs" />
-    <Compile Include="Parsers\ParseHelper.cs" />
-    <Compile Include="Parsers\RegionParser.cs" />
-    <Compile Include="Parsers\RuleDefination.cs" />
-    <Compile Include="Parsers\RuleParser.cs" />
-    <Compile Include="Parsers\RuleRegion.cs" />
+    <Compile Include="Parser\ParseHelper.cs" />
+    <Compile Include="Parser\RegionParser.cs" />
+    <Compile Include="Parser\RuleDefination.cs" />
+    <Compile Include="Parser\RuleParser.cs" />
+    <Compile Include="Parser\RuleRegion.cs" />
     <Compile Include="RConfig.cs" />
     <Compile Include="REnginer.cs" />
     <Compile Include="Worker\IActuator.cs" />
