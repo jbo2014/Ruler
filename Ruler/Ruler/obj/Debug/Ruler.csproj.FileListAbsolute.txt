@@ -1,6 +1,5 @@
 E:\GitHubs\Ruler\Ruler\bin\Debug\Ruler.dll
 E:\GitHubs\Ruler\Ruler\bin\Debug\Ruler.pdb
 E:\GitHubs\Ruler\Ruler\bin\Debug\Noesis.Javascript.dll
-E:\GitHubs\Ruler\Ruler\obj\Debug\Ruler.csprojResolveAssemblyReference.cache
 E:\GitHubs\Ruler\Ruler\obj\Debug\Ruler.dll
 E:\GitHubs\Ruler\Ruler\obj\Debug\Ruler.pdb

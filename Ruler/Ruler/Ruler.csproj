@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Noesis.Javascript, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" Condition="'$(PlatformTarget)' == 'x86'">
+    <Reference Include="Noesis.Javascript">
       <HintPath>..\packages\Noesis.Javascript.0.7.1.0\lib\net40\x86\Noesis.Javascript.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -53,15 +52,20 @@
     </Reference>  -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultJavascriptGenerator.cs" />
     <Compile Include="Depot\IPage.cs" />
     <Compile Include="Depot\IPattern.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="IJavascriptGenerator.cs" />
     <Compile Include="Manager\IRuleDefination.cs" />
+    <Compile Include="ParameterInfo.cs" />
     <Compile Include="Parsers\ParseHelper.cs" />
     <Compile Include="Parsers\RegionParser.cs" />
     <Compile Include="Parsers\RuleDefination.cs" />
     <Compile Include="Parsers\RuleParser.cs" />
     <Compile Include="Parsers\RuleRegion.cs" />
     <Compile Include="RConfig.cs" />
+    <Compile Include="REnginer.cs" />
     <Compile Include="Worker\IActuator.cs" />
     <Compile Include="Worker\IScheduler.cs" />
     <Compile Include="Manager\IParser.cs" />

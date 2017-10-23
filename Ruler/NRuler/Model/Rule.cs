@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RuleEngine.Parsers
+namespace NRuler.Model
 {
-    internal class RuleDefination
+    internal class Rule
     {
         public string RegionName { get; set; }
         public string RuleName { get; set; }

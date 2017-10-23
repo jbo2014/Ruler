@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace RuleEngine
+namespace Ruler
 {
     internal class DefaultJavascriptGenerator : IJavascriptGenerator
     {

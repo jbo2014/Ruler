@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ruler.Manager
+namespace NRuler.Worker
 {
-    interface IRuleDefination
+    class WorkerJsnet : IWorker
     {
-        //public 
     }
 }
