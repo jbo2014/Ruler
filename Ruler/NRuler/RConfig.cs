@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
-using Ruler.Parsers;
-=======
-using Ruler.Parser;
->>>>>>> 93922520154069d35f4166fec1dcf120a5944033
+using NRuler.Model;
 
-namespace Ruler
+namespace NRuler
 {
     internal class RConfig
     {
         public RConfig()
         {
-            this.RuleDefinations = new Dictionary<string, RuleDefination>();
+            this.RuleDefinations = new Dictionary<string, Rule>();
         }
 
         public bool ThrowExceptionIfNotfoundRule { get; set; }
         public string RulefilesPath { get; set; }
-        public Dictionary<string, RuleDefination> RuleDefinations { get; set; }
+        public Dictionary<string, Rule> RuleDefinations { get; set; }
     }
 }

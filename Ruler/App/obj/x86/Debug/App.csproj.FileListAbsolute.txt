@@ -1,0 +1,2 @@
+E:\GitHubs\Ruler\App\bin\Debug\App.exe.config
+E:\GitHubs\Ruler\App\obj\x86\Debug\App.csprojResolveAssemblyReference.cache

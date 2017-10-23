@@ -1,12 +1,22 @@
 ﻿
+<<<<<<< HEAD
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+=======
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+>>>>>>> 93922520154069d35f4166fec1dcf120a5944033
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruler", "Ruler\Ruler.csproj", "{827FFB49-4B37-42CE-9B9F-8BFAD1D6A574}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{1EBA432C-B66F-4221-8C93-5B891A63A0A4}"
 EndProject
+<<<<<<< HEAD
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRuler", "NRuler\NRuler.csproj", "{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}"
+EndProject
+>>>>>>> 93922520154069d35f4166fec1dcf120a5944033
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +47,19 @@ Global
 		{1EBA432C-B66F-4221-8C93-5B891A63A0A4}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1EBA432C-B66F-4221-8C93-5B891A63A0A4}.Release|x86.ActiveCfg = Release|x86
 		{1EBA432C-B66F-4221-8C93-5B891A63A0A4}.Release|x86.Build.0 = Release|x86
+<<<<<<< HEAD
+=======
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}.Release|x86.ActiveCfg = Release|Any CPU
+>>>>>>> 93922520154069d35f4166fec1dcf120a5944033
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

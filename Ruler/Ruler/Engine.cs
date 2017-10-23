@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using Noesis.Javascript;
 
+<<<<<<< HEAD
 namespace RuleEngine
+=======
+namespace Ruler
+>>>>>>> 93922520154069d35f4166fec1dcf120a5944033
 {
     internal static class Engine
     {
@@ -65,6 +69,16 @@ namespace RuleEngine
             GetResult(externalCode, parameters);
         }
 
+<<<<<<< HEAD
+=======
+        public static void GetResultByType<T>(string externalCode, params ParameterInfo[] parameters) 
+        {
+            T t;
+            object o = GetResult(externalCode, parameters);
+            return t.Parse(o);
+        }
+
+>>>>>>> 93922520154069d35f4166fec1dcf120a5944033
         public static object GetResult(string externalCode, params ParameterInfo[] parameters)
         {
             ResourceEnsurace();
