@@ -31,25 +31,60 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Noesis.Javascript, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" Condition="'$(PlatformTarget)' == 'x86'">
+      <HintPath>..\packages\Noesis.Javascript.0.7.1.0\lib\net40\x86\Noesis.Javascript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <!-- <Reference Include="Noesis.Javascript, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=x86" Condition=" '$(Platform)' == 'x86' ">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\Noesis.Javascript v0.7 - Binaries\.Net4.0\x86\Noesis.Javascript.dll</HintPath>
+    </Reference>
+    <Reference Include="Noesis.Javascript, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=AMD64" Condition=" '$(Platform)' == 'x64' ">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\Noesis.Javascript v0.7 - Binaries\.Net4.0\x64\Noesis.Javascript.dll</HintPath>
+    </Reference>  -->
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Depot\IPage.cs" />
     <Compile Include="Depot\IPattern.cs" />
-    <Compile Include="Enginer\IActuator.cs" />
-    <Compile Include="Enginer\IScheduler.cs" />
+    <Compile Include="Manager\IRuleDefination.cs" />
+    <Compile Include="Parsers\ParseHelper.cs" />
+    <Compile Include="Parsers\RegionParser.cs" />
+    <Compile Include="Parsers\RuleDefination.cs" />
+    <Compile Include="Parsers\RuleParser.cs" />
+    <Compile Include="Parsers\RuleRegion.cs" />
+    <Compile Include="RConfig.cs" />
+    <Compile Include="Worker\IActuator.cs" />
+    <Compile Include="Worker\IScheduler.cs" />
     <Compile Include="Manager\IParser.cs" />
     <Compile Include="Manager\IVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Scripts\underscore-min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\underscore-min.js" />
+    <Content Include="Scripts\underscore.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Noesis.Javascript.0.7.1.0\NativeBinaries\net40\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Noesis.Javascript.0.7.1.0\NativeBinaries\net40\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
