@@ -5,10 +5,12 @@ using System.Text;
 
 namespace NRuler.Worker
 {
-    interface IWorker
+    public interface IWorker
     {
-        void SetParameter();
-        void Run();
+        List<ParamInfo> SetParam(string paramName, object paramValue);
+        List<ParamInfo> SetParams(params ParamInfo[] paramList);
+        object Run(string externalCode, params ParamInfo[] parameters);
+        T GetResult<T>();
         object GetResult();
     }
 }

@@ -6,18 +6,23 @@ using NRuler.Command;
 
 namespace NRuler
 {
-    public class Invoke
+    class Invoke
     {
-        public ICommand _command;
+        private ICommand _command;
 
         public Invoke(ICommand command)
         {
             this._command = command;
         }
 
-        public void ExecuteCommand()
+        public object ExecuteCommand()
         {
-            _command.Action();
+            return _command.Action();
+        }
+
+        public T ExecuteCommand<T>()
+        {
+            return _command.Action<T>();
         }
     }
 }

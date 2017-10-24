@@ -1,0 +1,21 @@
+﻿#region 交税
+	rule default
+		return 1;
+	end rule
+	rule 员工
+		if(salary>=5000&&salary<7000)
+			return 100;
+		if(salary>=7000&&salary<9000)
+			return 200;
+		if(salary>=9000&&salary<10000)
+			return 300;
+		return "没有在员工范围";
+	end rule
+	rule 领导
+		if(salary>=10000&&salary<20000)
+			return 500;
+		if(salary>=20000&&salary<30000)
+			return 800;
+		return "没有在领导范围";
+	end rule
+#endregion

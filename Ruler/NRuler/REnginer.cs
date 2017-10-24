@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using NRuler.Worker;
 using NRuler.Command;
+using NRuler.Model;
+using NRuler.Helper;
 
 namespace NRuler
 {
@@ -82,7 +84,7 @@ namespace NRuler
                 text.AppendLine(fileText);
             });
 
-            List<RuleRegion> regions = RegionParser.ParseRegions(text.ToString());
+            List<Region> regions = RegionParser.ParseRegions(text.ToString());
             if (regions == null || regions.Count == 0)
                 throw new Exception("region不存在");
 
@@ -117,21 +119,53 @@ namespace NRuler
         /// <summary>
         /// 修改规则
         /// </summary>
-        public void UpdateRule()
+        public void UpdateRule(string regionName, string ruleName, string ruleContent)
         {
+            Rule rule = new Rule();
+            rule.RegionName = regionName;
+            rule.RuleName = ruleName;
+            rule.RuleContent = ruleContent;
+            config.RuleDefinations[rule.RegionName+"."+rule.RuleName].RuleContent = rule.RuleContent;
+        }
+        
+        private static string DefaultRuleName = "default";
+        private static string LocateRuleContent(string ruleRegionId, string ruleId)
+        {
+            var key = string.Format("{0}.{1}", ruleRegionId, ruleId);
+            if (config.RuleDefinations.ContainsKey(key))
+                return config.RuleDefinations[key].RuleContent;
 
+            if (config.ThrowExceptionIfNotfoundRule)
+                throw new Exception("没有找到" + key);
+
+            key = string.Format("{0}.{1}", ruleRegionId, DefaultRuleName);
+            if (config.RuleDefinations.ContainsKey(key))
+                return config.RuleDefinations[key].RuleContent;
+
+            throw new Exception("没有找到" + key);
         }
 
-
-        public void Execute() 
+        public ParamInfo SetParam(string name, object value) 
         {
-            IWorker worker = new WorkerJsnet();
-            ICommand command = new CommandJsnet(worker);
-            command.
+            ParamInfo info = new ParamInfo();
+            info.ParamName = name;
+            info.ParamValue = value;
+            return info;
+        }
 
+        public object Execute(string ruleRegionId, string ruleId=null, params ParamInfo[] paramArray) 
+        {
+            Rule rule = new Rule();
+            rule.RegionName = ruleRegionId;
+            rule.RuleName = string.IsNullOrEmpty(ruleId)?string.Empty:ruleId;
+            rule.RuleContent = LocateRuleContent(ruleRegionId, ruleId);
+
+            IWorker worker = new WorkerJsnet();
+            ICommand command = new CommandJsnet(worker, rule, paramArray);
             Invoke i = new Invoke(command);
 
-            i.ExecuteCommand();
+            //return i.ExecuteCommand<float>();
+            return i.ExecuteCommand();
         }
     }
 }

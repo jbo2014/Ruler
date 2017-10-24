@@ -11,12 +11,8 @@
     <RootNamespace>App</RootNamespace>
     <AssemblyName>App</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-<<<<<<< HEAD
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
-=======
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
->>>>>>> 93922520154069d35f4166fec1dcf120a5944033
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -52,15 +48,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ruler\Ruler.csproj">
-      <Project>{827ffb49-4b37-42ce-9b9f-8bfad1d6a574}</Project>
-      <Name>Ruler</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="Rules\Fee.rule" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Rules\Check.rule" />
-    <None Include="Rules\Fee.rule" />
+    <ProjectReference Include="..\NRuler\NRuler.csproj">
+      <Project>{9E8C4F81-E9CD-4A83-946F-7BC049A1A0FA}</Project>
+      <Name>NRuler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
