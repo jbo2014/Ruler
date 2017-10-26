@@ -1,0 +1,5 @@
+E:\GitHubs\Ruler\NRuler\bin\Debug\NRuler.dll
+E:\GitHubs\Ruler\NRuler\bin\Debug\NRuler.pdb
+E:\GitHubs\Ruler\NRuler\bin\Debug\Noesis.Javascript.dll
+E:\GitHubs\Ruler\NRuler\obj\Debug\NRuler.dll
+E:\GitHubs\Ruler\NRuler\obj\Debug\NRuler.pdb

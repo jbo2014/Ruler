@@ -1,0 +1,8 @@
+E:\GitHubs\Ruler\Web\bin\Web.dll
+E:\GitHubs\Ruler\Web\bin\Web.pdb
+E:\GitHubs\Ruler\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+E:\GitHubs\Ruler\Web\obj\Debug\Web.dll
+E:\GitHubs\Ruler\Web\obj\Debug\Web.pdb
+E:\GitHubs\Ruler\Web\bin\NRuler.dll
+E:\GitHubs\Ruler\Web\bin\Noesis.Javascript.dll
+E:\GitHubs\Ruler\Web\bin\NRuler.pdb

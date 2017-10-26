@@ -1,0 +1,44 @@
+﻿#region 交税
+	rule default
+		return 1;
+	end rule
+	
+	rule 员工
+		if(salary>=5000&&salary<7000)
+			return 100;
+		else if(salary>=7000&&salary<9000)
+			return 200;
+		else if(salary>=9000&&salary<10000)
+			return 300;
+		else 
+			return "没有在员工范围";
+	end rule
+
+	rule 领导
+		if(salary>=10000&&salary<20000)
+			return 500;
+		else if(salary>=20000&&salary<30000)
+			return 800;
+		else 
+			return "没有在领导范围";
+	end rule
+		
+	rule ALL
+		if(user.post=="员工")
+			if(user.salary>=5000&&user.salary<7000)
+				return 100;
+			else if(user.salary>=7000&&user.salary<9000)
+				return 200;
+			else if(user.salary>=9000&&user.salary<10000)
+				return user.wl();
+			else 
+				return "没有在员工范围";
+		if(user.post=="领导")
+			if(user.salary>=10000&&user.salary<20000)
+				return 500;
+			else if(user.salary>=20000&&user.salary<30000)
+				return 800;
+			else 
+				return "没有在领导范围";
+	end rule
+#endregion

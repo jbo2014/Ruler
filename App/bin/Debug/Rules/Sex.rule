@@ -1,0 +1,9 @@
+﻿#region 性别
+	rule default
+		var o = new User{ sex=0, salary=10000, post="员工" }
+		if(o.sex==1)
+			return "男"
+		if(o.sex==0)
+			return "女"
+	end rule
+#endregion

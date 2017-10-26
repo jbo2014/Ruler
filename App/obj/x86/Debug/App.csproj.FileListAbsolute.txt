@@ -1,0 +1,9 @@
+E:\GitHubs\Ruler\App\bin\Debug\App.exe.config
+E:\GitHubs\Ruler\App\obj\x86\Debug\App.csprojResolveAssemblyReference.cache
+E:\GitHubs\Ruler\App\bin\Debug\App.exe
+E:\GitHubs\Ruler\App\bin\Debug\App.pdb
+E:\GitHubs\Ruler\App\bin\Debug\NRuler.dll
+E:\GitHubs\Ruler\App\bin\Debug\Noesis.Javascript.dll
+E:\GitHubs\Ruler\App\bin\Debug\NRuler.pdb
+E:\GitHubs\Ruler\App\obj\x86\Debug\App.exe
+E:\GitHubs\Ruler\App\obj\x86\Debug\App.pdb
