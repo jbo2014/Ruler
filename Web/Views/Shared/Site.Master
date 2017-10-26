@@ -402,7 +402,8 @@
     <script src="/Content/js/inspinia.js"></script>
     <script src="/Content/js/plugins/pace/pace.min.js"></script>
 
-
+    
+    <asp:ContentPlaceHolder ID="FooterScript" runat="Server" />
 </body>
 
 </html>

@@ -69,9 +69,9 @@ namespace NRuler
         }
         
         /// <summary>
-        /// 加载所有规则
+        /// 原方法-加载所有规则
         /// </summary>
-        public void LoadRules()
+        public void LoadRules0()
         {
             var files = System.IO.Directory.GetFiles(config.RulefilesPath, "*.rule");
             if (files == null || files.Length == 0)
@@ -109,6 +109,50 @@ namespace NRuler
         }
 
         /// <summary>
+        /// 新方法-加载所有规则
+        /// </summary>
+        public void LoadRules()
+        {
+            var files = System.IO.Directory.GetFiles(config.RulefilesPath, "*.rule");
+            if (files == null || files.Length == 0)
+                throw new Exception("rule文件不存在");
+
+            List<Region> regions = new List<Region>();
+            string fileName = string.Empty;
+            StringBuilder text = new StringBuilder();
+            files.ToList().ForEach(file =>
+            {
+                fileName = System.IO.Path.GetFileNameWithoutExtension(file);
+                var fileText = System.IO.File.ReadAllText(file);
+                config.FileRegion[fileName] = RegionParser.ParseRegions(fileText.ToString());
+                regions.AddRange(config.FileRegion[fileName]);
+                text.AppendLine(fileText);
+            });
+
+            if (regions == null || regions.Count == 0)
+                throw new Exception("region不存在");
+
+            regions.ForEach(region =>
+            {
+                var rules = RuleParser.ParseRules(region.RegionContent);
+
+                if (regions == null || regions.Count == 0)
+                    throw new Exception(string.Format("region '{0}' 无法找到rule", region.RegionName));
+
+                rules.ForEach(rule =>
+                {
+                    rule.RegionName = region.RegionName;
+                });
+
+                rules.ForEach(rule =>
+                {
+                    var key = string.Format("{0}.{1}", rule.RegionName, rule.RuleName);
+                    config.RuleDefinations[key] = rule;
+                });
+            });
+        }
+
+        /// <summary>
         /// 加载单独规则
         /// </summary>
         public void LoadRule() 
@@ -119,7 +163,7 @@ namespace NRuler
         /// <summary>
         /// 修改规则
         /// </summary>
-        public void UpdateRule(string regionName, string ruleName, string ruleContent)
+        public void UpdateRule(string fileName, string regionName, string ruleName, string ruleContent)
         {
             // 修改config中保存的Rule
             Rule rule = new Rule();
@@ -129,7 +173,9 @@ namespace NRuler
             config.RuleDefinations[rule.RegionName+"."+rule.RuleName].RuleContent = rule.RuleContent;
 
             // 修改Rule文件中的规则内容
-
+            var fileTxt = System.IO.File.ReadAllText(config.RulefilesPath+"/"+fileName + ".rule");
+            Regex reg = new Regex(@"@\w+:\d{6}");   //定义正则表达式  
+            MatchCollection mc = reg.Matches(str); 
         }
         
         private static string DefaultRuleName = "default";
