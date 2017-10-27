@@ -24,19 +24,20 @@ namespace Web.Controllers
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             var list = js.Deserialize<List<Models.Section>>(form["RuleContent"]);
+            string ruleContent = string.Empty;
+
             if (list.Any())
             {
-
                 foreach (var item in list)
                 {
-
+                    ruleContent += "if (" + item.lhs + ")\r\n";
+                    ruleContent += "    return " + item.rhs + ";\r\n";
                 }
             }
 
-            if (true)
-                return Content("OK");
-            else
-                return new RedirectResult("/ExeRule");
+            enginer.UpdateRule(form["FileName"], form["RegionName"], form["RuleName"], ruleContent);
+
+            return new RedirectResult("/ExeRule");
         }
 
     }

@@ -4,14 +4,13 @@
 	end rule
 	
 	rule 员工
-		if(salary>=5000&&salary<7000)
-			return 100;
-		else if(salary>=7000&&salary<9000)
-			return 200;
-		else if(salary>=9000&&salary<10000)
-			return 300;
-		else 
-			return "没有在员工范围";
+		var salary = new Int;
+		if (salary>=5000&&salary<7000)
+			return (100);
+		if (salary>=7000&&salary<9000)
+			return (200);
+		if (salary>=9000&&salary<10000)
+			return (300);
 	end rule
 
 	rule 领导

@@ -4,6 +4,7 @@
 	end rule
 	
 	rule 员工
+		var salary = new Int;
 		if(salary>=5000&&salary<7000)
 			return 100;
 		else if(salary>=7000&&salary<9000)

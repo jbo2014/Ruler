@@ -44,7 +44,7 @@ namespace App
                 
                 Console.WriteLine("请修改规则<领导>:");
                 string ruleStr = Console.ReadLine();
-                enginer.UpdateRule("交税", "领导", ruleStr);
+                //enginer.UpdateRule("交税", "领导", ruleStr);
                 Console.WriteLine("30000: " + enginer.Execute("交税", "领导", enginer.SetParam("salary", 30000)));
 
                 Console.ReadKey();

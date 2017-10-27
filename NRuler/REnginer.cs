@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using NRuler.Worker;
 using NRuler.Command;
 using NRuler.Model;
 using NRuler.Helper;
+using System.Text.RegularExpressions;
 
 namespace NRuler
 {
@@ -62,7 +64,7 @@ namespace NRuler
                 throw new Exception("请先在配置文件中指定规则文件目录");
 
             config.RulefilesPath = rulesPath;
-            config.RulefilesPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, config.RulefilesPath);
+            config.RulefilesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, config.RulefilesPath);
 
             if (!System.IO.Directory.Exists(config.RulefilesPath))
                 throw new Exception("规则文件目录不存在");
@@ -113,7 +115,7 @@ namespace NRuler
         /// </summary>
         public void LoadRules()
         {
-            var files = System.IO.Directory.GetFiles(config.RulefilesPath, "*.rule");
+            var files = Directory.GetFiles(config.RulefilesPath, "*.rule");
             if (files == null || files.Length == 0)
                 throw new Exception("rule文件不存在");
 
@@ -122,8 +124,8 @@ namespace NRuler
             StringBuilder text = new StringBuilder();
             files.ToList().ForEach(file =>
             {
-                fileName = System.IO.Path.GetFileNameWithoutExtension(file);
-                var fileText = System.IO.File.ReadAllText(file);
+                fileName = Path.GetFileNameWithoutExtension(file);
+                var fileText = File.ReadAllText(file);
                 config.FileRegion[fileName] = RegionParser.ParseRegions(fileText.ToString());
                 regions.AddRange(config.FileRegion[fileName]);
                 text.AppendLine(fileText);
@@ -166,16 +168,57 @@ namespace NRuler
         public void UpdateRule(string fileName, string regionName, string ruleName, string ruleContent)
         {
             // 修改config中保存的Rule
-            Rule rule = new Rule();
-            rule.RegionName = regionName;
-            rule.RuleName = ruleName;
-            rule.RuleContent = ruleContent;
-            config.RuleDefinations[rule.RegionName+"."+rule.RuleName].RuleContent = rule.RuleContent;
+            config.RuleDefinations[regionName + "." + ruleName].RuleContent = ruleContent;
 
             // 修改Rule文件中的规则内容
-            var fileTxt = System.IO.File.ReadAllText(config.RulefilesPath+"/"+fileName + ".rule");
-            Regex reg = new Regex(@"@\w+:\d{6}");   //定义正则表达式  
-            MatchCollection mc = reg.Matches(str); 
+            var fileTxt = File.ReadAllText(config.RulefilesPath+"/"+fileName + ".rule");
+            string regStr = @"(rule " + ruleName + @")[\s\S]*?(end rule)";
+            string newFileTxt = RegexReplaceRule(fileTxt, "rule " + ruleName + "\r\n" + ruleContent + " end rule", regStr, 0, 1, false);
+            File.WriteAllText(config.RulefilesPath + "/" + fileName + ".rule", newFileTxt, Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// 获取字符串,查找替换
+        /// </summary>
+        /// <param name="text">字符串</param>
+        /// <param name="val">替换值</param>
+        /// <param name="rex">查找规则[正则,如:@"\d{2}",直接匹配字符,如:'abc']..注意正则转义</param>
+        /// <param name="textIndex">要替换出现的位置从1开始</param>
+        /// <param name="once">如果只出现一次,是否替换,[0:否,1:是]</param>
+        /// <param name="flag">是否全部替换</param>
+        /// <returns></returns>
+        private string RegexReplaceRule(string text, string val, string rex, int textIndex,int once, bool flag)
+        {
+            Regex rx = new Regex(rex, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            MatchCollection match = rx.Matches(text);
+        
+            //全部替换或者出现1次是否替换,once==1,替换
+            if (flag == true ||(match.Count==1 && once==1))
+            {
+                return Regex.Replace(text, rex, val);
+            }
+       
+            //判断出现的数量,与替换位置,这里是出现过2次
+            if (match.Count > 1 && textIndex <= match.Count)
+            {
+                int count = 0;//定义出现位置
+                string str1 = string.Empty;//定义出现字符位置的前面字符串
+                string str2 = string.Empty;//定义出现字符位置的后面字符串
+                foreach (Match m in match)
+                {
+                    int index = m.Index;
+                    str1 = text.Substring(0, index);//截取前面字符串
+                    string s = m.Value;//查找规则的值
+                    str2 = text.Substring(index + s.Length);//截取后面字符串
+                    count++;
+                    //如果出现位置与查找位置相同,则返回
+                    if (count == textIndex)
+                    {
+                        return str1 + val + str2;//前面字符串+替换的字符串+后面字符串
+                    }
+                }
+            }
+            return text;//如果没有找到,返回原字符串
         }
         
         private static string DefaultRuleName = "default";
